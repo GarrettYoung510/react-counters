@@ -1,6 +1,20 @@
 import React, { Component } from "react";
 
 class Counter extends Component {
+  componentDidUpdate(prevProps, prevState) {
+    console.log("prevProps", prevProps);
+    console.log("prevState", prevState);
+    if (prevProps.counter.value !== this.props.counter.value) {
+      // run something here on change
+    }
+  }
+
+  componentWillUnmount() {
+    //   when we delete a counter or "UNMOUNT" it
+    // react notices that the component is not there anymore and defines it as unmounted
+    console.log("counter-unmount");
+  }
+
   render() {
     return (
       // need the div because when react uses babel to convert this to our browser

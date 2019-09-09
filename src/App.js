@@ -14,6 +14,18 @@ class App extends Component {
     ]
   };
 
+  constructor() {
+    // only way to use props is to pass it through constructor and super
+    super();
+    console.log("App - Constructor");
+    // this.state = this.props.something;
+  }
+
+  componentDidMount() {
+    // Ajax Call
+    console.log("App-Mounted");
+  }
+
   handleIncrement = counter => {
     //   clones the array and all that is in it
     const counters = [...this.state.counters];
@@ -41,10 +53,13 @@ class App extends Component {
   };
 
   render() {
+    console.log("app rendered");
     return (
       <React.Fragment>
         {/* will filter counters with value higher than 0 */}
-        <NavBar totalCounters={this.state.counters.filter(c => c.value > 0).length} />
+        <NavBar
+          totalCounters={this.state.counters.filter(c => c.value > 0).length}
+        />
         <main className="container">
           <Counters
             counters={this.state.counters}
